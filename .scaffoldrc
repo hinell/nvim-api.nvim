@@ -1,0 +1,14 @@
+# ex: ft=bash
+# Autogenarted by Scaffold Toolset on [December 24, 2023]
+# This is a shell script intended to be sourced
+SC_VERSION=1.1.1
+GIT_REPO_URL_HOST="github.com"
+GIT_REPO_URL_PATH=("hinell/nvim-api.nvim" )
+GIT_USERNAME="hinell"
+GIT_USEREMAIL="al.neodim@gmail.com"
+GIT_HOOKS_FOLDER=".githooks"
+DOC_PROJECT_NAME=("nvim-api.nvim" )
+DOC_PROJECT_SUMMARY="Cross-runtime OOP based nvim API wrapper"
+LICENSE_TYPE="Free and Open Source Software [International] License (FOSSIL) v1.0.2"
+LICENSE_PATH="/home/alex/.local/share/scaffold/templates/license/fossil-v1.0.2.txt.in"
+NVIM_PLUGIN_MODULE_NAME=("nvim-api" )

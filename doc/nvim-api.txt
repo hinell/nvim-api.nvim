@@ -1,0 +1,130 @@
+*nvim-api.txt*                                   Last change: 2023 December 29
+
+==============================================================================
+Table of Contents                                 *nvim-api-table-of-contents*
+
+OVERVIEW ................................................. |nvim-api-overview|
+INSTALL ................................................... |nvim-api-install|
+UPDATE ..................................................... |nvim-api-update|
+API ........................................................... |nvim-api-api|
+CONFIGURATION ....................................... |nvim-api-configuration|
+
+------------------------------------------------------------------------------
+OVERVIEW                                                   *nvim-api-overview*
+
+
+Cross-runtime OOP based nvim API wrapper
+
+REQUIREMENTS
+
+- Neovim 0.8.3+: https://github.com/neovim/neovim
+
+------------------------------------------------------------------------------
+INSTALL                                                     *nvim-api-install*
+
+
+Use your favorite package manager (Packer, Plug, Lazy.nvim etc.)
+
+>
+    hinell/nvim-api
+<
+lazy.nvim:
+
+>lua
+    require("lazy").setup({
+        {
+            "hinell/nvim-api",
+            dependencies={},
+            config = function()
+                -- see setup() below
+            end
+        }
+    })
+<
+  **WARNING** Packer.nvim is archived
+
+pckr.nvim: packer.nvim:
+
+>lua
+        use({
+            "hinell/nvim-api",
+            requires={},
+            config = function()
+                -- see setup() below
+            end
+        })
+<
+
+------------------------------------------------------------------------------
+UPDATE                                                       *nvim-api-update*
+
+
+You may want to reinstall this plugin manually: because of specific
+dev-apprach, the plugin repo may be force-rebased, rendering all previous
+commits obsolete.
+
+
+------------------------------------------------------------------------------
+API                                                             *nvim-api-api*
+
+
+* `M.autocmds:enable({ "AutoCmdName" })` `M.autocmds:disable({ "AutoCmdName"
+  })` `M.autocmds:toggle({ "AutoCmdName" })` This set of commands can be used
+  to enable/disable user autocommands at runtime. It takes two tables used by
+  `nvim_create_autocmd`.
+>lua
+    local napi = require("nvim-api")
+    local autocmds = {
+    	{
+    		"BufNew"
+    	},{
+    		pattern  = "*",
+    		once     = true,
+    		group    = "MyAuGroup",
+    		callback = function(auEvent)
+    			print("triggered when buffer is created")
+    		end
+    	}
+    }
+    
+    -- Enable entire table of autocmds dynamically
+    napi.autocmds:enable(autocmds)
+    -- Toggle entire table of autocmds dynamically
+    napi.autocmds:toggle(autocmds)
+<
+* `M.commands:enable({ name = ..., })` `M.commands:disable({ name = ..., })`
+  `M.commands:toggle({ name = ..., })` This set of commands can be used to
+  enable/disable user commands at runtime. It takes the same user command spec
+  table used by `nvim_create_user_command`
+>lua
+    local napi = require("nvim-api")
+     
+    local cmds = {
+        {
+            name   = "UserCommandX",
+            action = function(args) print("test") end,
+            opts = {
+                desc  = "Example of user command",
+                force = true,
+                bar   = true,
+                nargs = "?"
+                    -- complete = function() end
+                    -- preview = function() end
+            }
+        }
+    }
+     
+    napi.commands:toggle(cmds) 
+<
+
+                                                                              
+CONFIGURATION                                         *nvim-api-configuration*
+
+Copyright  2023 - Alexander Davronov, et.al.
+December 24, 2023
+
+February 16, 2024
+
+
+
+vim:tw=78:ts=8:ft=help:norl:
