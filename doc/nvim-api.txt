@@ -1,0 +1,95 @@
+*nvim-api.txt*                                   Last change: 2023 December 29
+
+==============================================================================
+Table of Contents                                 *nvim-api-table-of-contents*
+
+OVERVIEW ................................................. |nvim-api-overview|
+INSTALL ................................................... |nvim-api-install|
+UPDATE ..................................................... |nvim-api-update|
+API ........................................................... |nvim-api-api|
+CONFIGURATION ....................................... |nvim-api-configuration|
+EXAMPLES ................................................. |nvim-api-examples|
+KEYMAP ..................................................... |nvim-api-keymap|
+
+------------------------------------------------------------------------------
+OVERVIEW                                                   *nvim-api-overview*
+
+
+Cross-runtime OOP based nvim API wrapper
+
+REQUIREMENTS
+
+- Neovim 0.8.3+: https://github.com/neovim/neovim
+
+------------------------------------------------------------------------------
+INSTALL                                                     *nvim-api-install*
+
+
+Use your favorite package manager (Packer, Plug, Lazy.nvim etc.)
+
+>
+    hinell/nvim-api
+<
+lazy.nvim:
+
+>lua
+    require("lazy").setup({
+        {
+            "hinell/nvim-api",
+            dependencies={},
+            config = function()
+                -- see setup() below
+            end
+        }
+    })
+<
+  **WARNING** Packer.nvim is archived
+
+pckr.nvim: packer.nvim:
+
+>lua
+        use({
+            "hinell/nvim-api",
+            requires={},
+            config = function()
+                -- see setup() below
+            end
+        })
+<
+
+------------------------------------------------------------------------------
+UPDATE                                                       *nvim-api-update*
+
+
+You may want to reinstall this plugin manually: because of specific
+dev-apprach, the plugin repo may be force-rebased, rendering all previous
+commits obsolete.
+
+
+------------------------------------------------------------------------------
+API                                                             *nvim-api-api*
+
+
+
+                                                                              
+CONFIGURATION                                         *nvim-api-configuration*
+
+
+                                                                              
+EXAMPLES                                                   *nvim-api-examples*
+
+
+                                                                              
+KEYMAP                                                       *nvim-api-keymap*
+
+NO keymap is setup by default.
+
+>lua
+    vim.keymap.set({ "n" }, "<ABC>"   ,"<CMD>COMMAND<CR>")
+<
+December 24, 2023
+Copyright  2023 - Alexander Davronov, et.al.
+
+
+
+vim:tw=78:ts=8:ft=help:norl:
